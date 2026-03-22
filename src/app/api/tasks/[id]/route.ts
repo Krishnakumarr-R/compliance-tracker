@@ -3,14 +3,17 @@ import { prisma } from "@/lib/prisma";
 
 export async function DELETE(
   _req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const task = await prisma.task.findUnique({ where: { id: params.id } });
+    const { id } = await params;
+
+    const task = await prisma.task.findUnique({ where: { id } });
     if (!task) {
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
     }
-    await prisma.task.delete({ where: { id: params.id } });
+
+    await prisma.task.delete({ where: { id } });
     return NextResponse.json({ message: "Deleted" });
   } catch (error) {
     console.error(error);

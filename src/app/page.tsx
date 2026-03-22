@@ -71,7 +71,7 @@ export default function Home() {
       <header className="border-b px-6 py-4">
         <div className="flex items-center gap-2">
           <ShieldCheck className="h-6 w-6 text-primary" />
-          <h1 className="text-xl font-bold tracking-tight">LedgersCFO Compliance Tracker</h1>
+          <h1 className="text-xl font-bold tracking-tight">Compliance Tracker</h1>
         </div>
       </header>
 
